@@ -10,9 +10,9 @@ In a past life I was in the Army
 ### Website Design
 Designed websites
 ### GCSS-A
-Managing all unit equipment
-### ALMS
-Document all maintenance
+Manange all equipment at unit level to include transfers, maintenance, fielding new gear, and testing.
+### Ulsaa
+Docuement all maintenance on large internal database for safekeeping. Set up additional databases in many remote locations
 
 ## Contact info
 Nathaniel Davis
