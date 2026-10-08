@@ -1,7 +1,15 @@
 :root {
-    --primary-bg: #08e534;
+    --primary-bg: #18453b;
+    --surface-bg: #ffffff;
     --primary-text: #050505eb;
-    --standard-gap: 40px;
+    --text-muted: #495057;
+    --accent-color: #0077b6;
+    --standard-gap: 24px;
+    --card-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
