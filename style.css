@@ -82,6 +82,17 @@ img {
     margin: 0 12px;
 }
 
+#Projects {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, minmax(100px,auto));
+    gap: 1em;
+}
+
+#Projects h2 {
+    grid-column: span 3 / span 3;
+}
+
 #Projects article {
     background-color: #f8f9fa; 
     border-left: 4px solid var(--primary-bg);
