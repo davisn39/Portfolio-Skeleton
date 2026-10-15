@@ -83,22 +83,33 @@ img {
 }
 
 #Projects {
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, minmax(100px,auto));
-    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--standard-gap);
 }
 
 #Projects h2 {
-    grid-column: span 3 / span 3;
+    grid-column: 1 / -1;
 }
 
 #Projects article {
     background-color: #f8f9fa; 
     border-left: 4px solid var(--primary-bg);
     padding: 12px 16px;
-    margin-bottom: 16px;
+    margin: 0;
     border-radius: 4px;   
+}
+
+@media (min-width: 600px) {
+    #Projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1000px) {
+    #Projects {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 #contact address {
