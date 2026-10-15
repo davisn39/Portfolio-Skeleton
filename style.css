@@ -71,24 +71,34 @@ img {
     margin: 0 auto 12px auto;
 }
 
+nav {
+    /* flexbone navigation mobile first 1d layout. Asked gemini how to code this and where to add it. */
+    background: var(--surface-bg);
+}
+
 .wayfinder ul {
     list-style-type: none;
     padding: 0;
     margin: 12px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .wayfinder li {
-    display: inline-block;
-    margin: 0 12px;
+    margin: 0;
 }
 
 #Projects {
+    /* Use one column by default and a shared gap between project cards. Added with Copilot AI. */
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--standard-gap);
 }
 
 #Projects h2 {
+    /* Keep the heading on its own row above all project cards. Added with Copilot AI. */
     grid-column: 1 / -1;
 }
 
@@ -96,23 +106,11 @@ img {
     background-color: #f8f9fa; 
     border-left: 4px solid var(--primary-bg);
     padding: 12px 16px;
-    margin: 0;
+    margin: 0; /* Let the grid gap control spacing between cards. Added with Copilot AI. */
     border-radius: 4px;   
 }
 
-@media (min-width: 600px) {
-    #Projects {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1000px) {
-    #Projects {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-#contact address {
+#Contact address {
     font-style: normal;
     background-color: #f8f9fa;
     padding: 12px;
@@ -143,9 +141,57 @@ footer {
     padding: var(--standard-gap);
     text-align: center;
     border-top: 2px solid #e9ecef;
-    font-size: 0.5rem;
-    color: #ffffff;
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
-nav {
-    background: var(--surface-bg);
+
+/*
+   MOBILE-FIRST MEDIA QUERIES (3 Distinct Breakpoints) Collabarated with Gemini AI. Prompt:
+   "Target only the #Projects section in style.css to create a responsive, 
+   two-dimensional card grid. Use CSS Grid starting with a 1-column mobile 
+   stack where the section h2 spans across the columns, articles have a 
+   left accent border, and grid gap manages the card spacing. Do not change 
+   the HTML structure." Output: Applied CSS Grid to #Projects container with grid-column span on h2, 
+   card surface styling on article children, and mobile-first column 
+   expansion via media queries.   */
+
+/* Breakpoint 1: Small Screens / Large Phones */
+
+@media (min-width: 480px) {
+    .wayfinder ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 24px;
+    }
 }
+
+/* Breakpoint 2: Tablets / Mid-Size Displays */
+
+@media (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+    img {
+        margin: 0;
+    }
+
+    #Projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Breakpoint 3: Desktops / Wide Displays */
+
+@media (min-width: 1024px) {
+    main {
+        max-width: 1000px;
+    }
+
+    #Projects {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
