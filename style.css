@@ -1,38 +1,63 @@
 :root {
     --primary-bg: #18453b;
     --surface-bg: #ffffff;
-    --primary-text: #050505eb;
+    --card-surface: #f8f9fa;
+    --primary-text: #050505;
     --text-muted: #495057;
     --accent-color: #0077b6;
+    --border-color: #e9ecef;
     --standard-gap: 24px;
     --card-radius: 8px;
 }
 
 [data-theme="dark"] {
-    --primary-bg: #0d1b1a;
-    --surface-bg: #1a1a1a;
-    --primary-text: #e9ecef;
-    --text-muted: #adb5bd;
-    --accent-color: #00b4d8;
+    --primary-bg: #0d231e;
+    --surface-bg: #1e1e1e;
+    --card-surface: #2b2b2b;
+    --primary-text: #f3f4f6;
+    --text-muted: #9ca3af;
+    --accent-color: #4ade80;
+    --border-color: #374151;
 }
+
 * {
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
-    background: var(--primary-bg);
+    background-color: var(--primary-bg);
     color: var(--primary-text);
     margin: 0;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
-    background: var(--surface-bg);
+    background-color: var(--surface-bg);
     padding: var(--standard-gap);
     text-align: center;
-    border-bottom: 2px solid #e9ecef;
-}  
+    border-bottom: 2px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#theme-toggle {
+    background-color: var(--card-surface);
+    color: var(--primary-text);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    filter: brightness(0.9);
+}
 
 main {
     max-width: 800px;
@@ -41,46 +66,50 @@ main {
 }
 
 section {
-    background: var(--surface-bg);
+    background-color: var(--surface-bg);
     padding: var(--standard-gap);
     margin-bottom: var(--standard-gap);
     border-radius: var(--card-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 h1 {
     font-size: 1.75rem;
     margin-top: 0;
-    color: var(--primary-bg);
+    color: var(--primary-text);
 }
 
 h2 {
     font-size: 1.4rem;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 8px;
     margin-top: 0;
+    color: var(--primary-text);
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 h3 {
     font-size: 1.15rem;
     margin-bottom: 8px;
+    color: var(--primary-text);
 }
 
 p {
     color: var(--text-muted);
     margin: 8px 0;
+    transition: color 0.3s ease;
 }
 
 img {
     border-radius: 50%;
-    border: 3px solid var(--primary-bg);
+    border: 3px solid var(--accent-color);
     display: block;
     margin: 0 auto 12px auto;
 }
 
 nav {
-    /* flexbone navigation mobile first 1d layout. Asked gemini how to code this and where to add it. */
-    background: var(--surface-bg);
+    background-color: var(--surface-bg);
 }
 
 .wayfinder ul {
@@ -98,39 +127,39 @@ nav {
 }
 
 #Projects {
-    /* Use one column by default and a shared gap between project cards. Added with Copilot AI. */
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--standard-gap);
 }
 
 #Projects h2 {
-    /* Keep the heading on its own row above all project cards. Added with Copilot AI. */
     grid-column: 1 / -1;
 }
 
 #Projects article {
-    background-color: #f8f9fa; 
-    border-left: 4px solid var(--primary-bg);
+    background-color: var(--card-surface);
+    border-left: 4px solid var(--accent-color);
     padding: 12px 16px;
-    margin: 0; /* Let the grid gap control spacing between cards. Added with Copilot AI. */
-    border-radius: 4px;   
+    margin: 0;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #Contact address {
     font-style: normal;
-    background-color: #f8f9fa;
+    background-color: var(--card-surface);
     padding: 12px;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 a {
     color: var(--accent-color);
     text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--primary-bg);
     text-decoration: none;
 }
 
@@ -144,25 +173,14 @@ a:hover {
 }
 
 footer {
-    background: var(--surface-bg);
+    background-color: var(--surface-bg);
     padding: var(--standard-gap);
     text-align: center;
-    border-top: 2px solid #e9ecef;
+    border-top: 2px solid var(--border-color);
     font-size: 0.9rem;
     color: var(--text-muted);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
-
-/*
-   MOBILE-FIRST MEDIA QUERIES (3 Distinct Breakpoints) Collabarated with Gemini AI. Prompt:
-   "Target only the #Projects section in style.css to create a responsive, 
-   two-dimensional card grid. Use CSS Grid starting with a 1-column mobile 
-   stack where the section h2 spans across the columns, articles have a 
-   left accent border, and grid gap manages the card spacing. Do not change 
-   the HTML structure." Output: Applied CSS Grid to #Projects container with grid-column span on h2, 
-   card surface styling on article children, and mobile-first column 
-   expansion via media queries.   */
-
-/* Breakpoint 1: Small Screens / Large Phones */
 
 @media (min-width: 480px) {
     .wayfinder ul {
@@ -172,8 +190,6 @@ footer {
     }
 }
 
-/* Breakpoint 2: Tablets / Mid-Size Displays */
-
 @media (min-width: 768px) {
     header {
         display: flex;
@@ -181,6 +197,11 @@ footer {
         align-items: center;
         text-align: center;
     }
+
+    #theme-toggle {
+        margin-top: 0;
+    }
+
     img {
         margin: 0;
     }
@@ -189,8 +210,6 @@ footer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
-
-/* Breakpoint 3: Desktops / Wide Displays */
 
 @media (min-width: 1024px) {
     main {
@@ -201,4 +220,3 @@ footer {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
-
