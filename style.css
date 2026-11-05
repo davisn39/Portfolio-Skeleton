@@ -8,6 +8,13 @@
     --card-radius: 8px;
 }
 
+[data-theme="dark"] {
+    --primary-bg: #0d1b1a;
+    --surface-bg: #1a1a1a;
+    --primary-text: #e9ecef;
+    --text-muted: #adb5bd;
+    --accent-color: #00b4d8;
+}
 * {
     box-sizing: border-box;
 }
